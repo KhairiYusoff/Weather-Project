@@ -12,24 +12,23 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
     const query = req.body.cityName;
-    const apiKey = "a56ba77734d54a64a5b17b8a6f45c5a2"
-    const unit = "metric"
-    var url = "https://api.openweathermap.org/data/2.5/weather?q= " + query + "&appid= " + apiKey + "&units= " + unit;
+    const apiKey = "51036f1f5d0c0e0cfa3e1ec93dbba941";
+    const unit = "metric";
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey + "&units=" + unit;
     https.get(url, function (response) {
-
+        console.log(response.statusCode)
         response.on("data", function (data) {
             const weatherData = JSON.parse(data);
             const temp = weatherData.main.temp;
             const desc = weatherData.weather[0].description;
             const icon = weatherData.weather[0].icon;
-            const city = weatherData.name;
             const imageURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
 
-            res.write("<h1> The temperature in " + city + " is " + temp + " degree celcius.</h1>");
+            res.write("<h1> The temperature in " + query + " is " + temp + " degree celcius.</h1>");
             res.write("<h3>The Weather is currently " + desc + "</h3>");
             res.write("<img src=" + imageURL + ">");
             res.send()
-            console.log(weatherData)
+
         })
     })
 })

@@ -4,7 +4,10 @@ const https = require("https");
 const app = express();
 
 app.get("/", function (req, res) {
-    var url = "https://api.openweathermap.org/data/2.5/weather?q=new york&appid=a56ba77734d54a64a5b17b8a6f45c5a2&units=metric";
+    const query = "dubai"
+    const apiKey = "a56ba77734d54a64a5b17b8a6f45c5a2"
+    const unit = "metric"
+    var url = "https://api.openweathermap.org/data/2.5/weather?q= " + query + "&appid= " + apiKey + "&units= " + unit;
     https.get(url, function (response) {
 
         response.on("data", function (data) {

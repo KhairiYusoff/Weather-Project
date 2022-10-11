@@ -1,0 +1,12 @@
+body{
+    margin: 0 auto;
+    padding: 0;
+    background-color: antiquewhite;
+}   
+
+.weather{
+    height: 100px;
+    width: 500px;
+    background-color: aqua;
+}
+
